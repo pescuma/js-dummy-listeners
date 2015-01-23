@@ -176,6 +176,24 @@ var suite = {
 
 		test.done();
 	},
+	
+	'One object does not affect other' : function(test) {
+		var c = { a: 1 };
+		var d = { a: 1 };
+		
+		var notified = false;
+		
+		c.addListener('a', function() {
+			notified = true;
+		});
+		
+		d.a = 2;
+
+		test.ok(!notified);
+
+		test.done();
+	},
+	
 };
 
 
