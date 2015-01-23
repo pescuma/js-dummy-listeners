@@ -3,6 +3,8 @@ js-dummy-listeners
 
 A JavaScript listener implementation for all fields
 
+[![Build Status](https://travis-ci.org/pescuma/js-dummy-listeners.png)](https://travis-ci.org/pescuma/js-dummy-listeners)
+
 
 ## Installation
 
