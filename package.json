@@ -1,0 +1,17 @@
+{
+    "name": "js-dummy-listeners"
+  , "description" : "A JavaScript listener implementation for all fields"
+  , "version": "0.1.0"
+  , "author" : "Ricardo Pescuma Domenecci"
+  , "url" : "http://github.com/pescuma/js-dummy-listeners"
+  , "license": "MIT"
+  , "main" : "./lib/dummy-listeners.js"
+  , "repository":  { "type": "git", "url": "http://github.com/pescuma/js-dummy-listeners" }
+  , "dependencies": {}
+  , "devDependencies": {
+      "nodeunit": "0.9.x"
+  }
+  , "scripts": {
+      "test": "nodeunit test/tests.js"
+  }
+}
