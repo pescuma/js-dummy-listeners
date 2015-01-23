@@ -194,6 +194,105 @@ var suite = {
 		test.done();
 	},
 	
+	'Add in multiple fields with field existing' : function(test) {
+		var c = { a: 1 };
+		
+		var notified = false;
+		
+		c.addListener('a', 'b', function() {
+			notified = true;
+		});
+		
+		c.a = 2;
+
+		test.ok(notified);
+
+		test.done();
+	},
+	
+	'Add in multiple fields with field not existing' : function(test) {
+		var c = { a: 1 };
+		
+		var notified = false;
+		
+		c.addListener('a', 'b', function() {
+			notified = true;
+		});
+		
+		c.b = 2;
+
+		test.ok(notified);
+
+		test.done();
+	},
+	
+	'Remove in multiple fields' : function(test) {
+		var c = { a: 1 };
+		
+		var notified = false;
+		var listener = function() {
+			notified = true;
+		};
+		
+		c.addListener('a', 'b', listener);
+		c.removeListener('c', 'a', listener);
+		
+		c.a = 2;
+
+		test.ok(!notified);
+
+		test.done();
+	},
+	
+	'Remove in multiple fields does not affect others' : function(test) {
+		var c = { a: 1 };
+		
+		var notified = false;
+		var listener = function() {
+			notified = true;
+		};
+		
+		c.addListener('a', 'b', listener);
+		c.removeListener('c', 'a', listener);
+		
+		c.b = 2;
+
+		test.ok(notified);
+
+		test.done();
+	},
+	
+	'Invalid arg type in add' : function(test) {
+		test.throws(function() {
+			c.addListener('a', 'b');
+		});
+
+		test.done();
+	},
+	
+	'Too few args in add' : function(test) {
+		test.throws(function() {
+			c.addListener('a');
+		});
+
+		test.done();
+	},
+	
+	'Invalid arg type in remove' : function(test) {
+		test.throws(function() {
+			c.removeListener('a', 'b');
+		});
+
+		test.done();
+	},
+	
+	'Too few args in remove' : function(test) {
+		test.throws(function() {
+			c.removeListener('a');
+		});
+
+		test.done();
+	},
 };
 
 
