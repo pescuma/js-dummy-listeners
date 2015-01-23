@@ -293,6 +293,41 @@ var suite = {
 
 		test.done();
 	},
+	
+	'Remove with return from add' : function(test) {
+		var c = { a: 1 };
+		
+		var notified = false;
+		
+		var remover = c.addListener('a', function() {
+			notified = true;
+		});
+		remover();
+		
+		c.a = 2;
+
+		test.ok(!notified);
+
+		test.done();
+	},
+	
+	'Remove with return from add with multiple fields' : function(test) {
+		var c = { a: 1 };
+		
+		var notified = false;
+		
+		var remover = c.addListener('a', 'b', function() {
+			notified = true;
+		});
+		remover();
+		
+		c.a = 2;
+		c.b = 2;
+
+		test.ok(!notified);
+
+		test.done();
+	},
 };
 
 
